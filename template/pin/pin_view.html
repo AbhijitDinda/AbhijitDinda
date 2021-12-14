@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %} 
+{% load static %} 
+{% block container %}
+{% include 'core/components/nav.html' %}
+
+<main role="main">
+
+    <div class="container">
+        <div class="row justify-content-center py-5">
+            <div class="col-lg-8">
+                <div class="card bg-light rounded shadow-sm post">
+
+                    <div class="row">
+                        <div class="col-8 text-left">
+                            <div class="card-header bg-light text-left">
+                                <div class="clearfix">
+                                    <div style="display: block;position: relative;">
+                                        <div style="display: inline-block;position: relative;">
+                                            <img style="max-width: 48px;max-height: 48px;" class="rounded-circle" src="{{pin.account.profile_pic.url}}" alt="{{pin.account.profile_pic.name}}"/>
+                                        </div>
+                                        <div style="display: inline-block;position: absolute;top: 2px;left: 56px;">
+                                            <div style="display: block;" class="">
+                                                <a class="text-dark font-weight-bold" href="{% url 'profile' pk=pin.account.id %}">{{pin.account.name}}</a>
+                                            </div>
+                                            <div style="display: block;" class="small">
+                                                <a class="text-secondary" href="{% url 'profile' pk=pin.account.id %}" title="{{pin.create_date|date:'l, F d, Y'}}">{{pin.create_date|date:"F d, Y"}}</a>&nbsp;-&nbsp;
+                                                <a class="text-secondary" href="{% url 'search' action='category' %}?q={{pin.get_category_display}}">{{pin.category}}</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="text-right m-3">
+                                {% if pin.account.id != account.id %}
+                                <a title="Report" class="action dropdown-item" href="#"><i class="fas fa-ban"></i></a> 
+                                {% else %}
+                                <a title="Edit" class="action dropdown-item" href="{% url 'pin_edit' pk=pin.id %}"><i
+                                        class="fas fa-edit"></i></a>
+                                <a title="Remove" class="action dropdown-item" href="{% url 'pin_remove' pk=pin.id %}"><i
+                                        class="fas fa-trash"></i></a></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <img class="card-img-top" src="{{pin.image.url}}" alt="Card image">
+
+                    <div class="card-body p-4">
+                        <h3 class="pb-4">{{pin.title}}</h3>
+                        <p class="pb-3 bg-light text-dark ">{{pin.details}}</p>
+                        <span class="badge badge-dark ">{{pin.tag}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock container %}

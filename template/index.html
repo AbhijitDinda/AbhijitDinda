@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %} 
+{% load static %} 
+{% block container %}
+{% include 'core/components/nav.html' %}
+
+<main role="main">
+
+    <div class="container-fluid mt-3">
+
+        {% include 'core/components/catagory.html' %}
+
+    </div>
+
+
+    <div class="container-fluid my-3">
+        <div class="card-columns">
+
+            {% for pin in pins %}
+
+            <div class="card card-pin">
+                <div class="card-body text-center">
+                    <a href="{% url 'pin_view' pk=pin.id %}">
+                        <img class="card-img-top" src="{{pin.image.url}}" alt="Card image">
+                    </a>
+                </div>
+                <div class="card-footer text-left">
+                    <div style="display: block;position: relative;">
+                        <div style="display: inline-block;position: relative;">
+                            <a href="{% url 'profile' pk=pin.account.id %}">
+                            {% if pin.account.profile_pic %}
+                            <img style="max-width: 40px;max-height: 40px;" class="rounded-circle" src="{{pin.account.profile_pic.url}}" alt="{{pin.account.profile_pic.name}}"></a>
+                            {% else %}
+                            <img style="max-width: 40px;max-height: 40px;" class="rounded-circle" src="{% static 'img/av.png' %}" alt="Card image"></a>
+                            {% endif %}
+                            </a>
+                        </div>
+                        <div style="display: inline-block;position: absolute;top: 0;left: 48px;" >
+                            <div style="display: block;" class="small">
+                                <a class="text-dark font-weight-bold" href="{% url 'profile' pk=pin.account.id %}">{{pin.account.name}}</a>
+                            </div>
+                            <div style="display: block;" class="small">
+                                <a class="text-secondary" href="{% url 'profile' pk=pin.account.id %}" title="{{pin.create_date|date:'l, F d, Y'}}">{{pin.create_date|date:"F d,Y"}}</a>&nbsp;-&nbsp;
+                                <a class="text-secondary" href="{% url 'search' action='category' %}?q={{pin.get_category_display}}">{{pin.category}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock container %}

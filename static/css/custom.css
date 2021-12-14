@@ -1,0 +1,58 @@
+/* navbar */
+
+.navbar {
+    padding: 0.5rem 1rem;
+}
+
+.cus-nav .nav-link {
+    color: var(--dark);
+    font-weight: normal;
+}
+
+.cus-nav .nav-link:hover,
+.cus-nav .nav-link:focus {
+    color: var(--gray-dark);
+    background: var(--gray200);
+}
+
+.cus-nav .nav-link-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    background: var(--gray200);
+    padding: 0px;
+    margin-right: 8px
+}
+
+.cus-nav .nav-link-icon i {
+    position: relative;
+    top: 0px;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 48px;
+    text-align: center
+}
+
+.cus-nav .show .nav-link-icon,
+.cus-nav .nav-link-icon:hover,
+.cus-nav .nav-link-icon:focus {
+    background: var(--gray400);
+}
+
+.cus-nav .nav-link-icon:active,
+.cus-nav .nav-link-icon:focus {
+    background: var(--gray400);
+    color: var(--dark)
+}
+
+.cus-nav .nav-link-icon.active {
+    background: var(--gray);
+    color: #fff;
+}
+
+.cus-nav .nav-link-icon.disabled {
+    color: rgba(0, 0, 0, .3)
+}

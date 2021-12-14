@@ -1,0 +1,63 @@
+{% load static %}
+
+<nav class="fixed-top bg-light">
+
+
+    <div class="container-fluid  ">
+
+        <div class="row">
+
+            <div class="col-4 col-sm-2 col-md-2 col-lg navbar">
+                <a class="navbar-brand font-weight-bolder mr-3" href="{% url 'home' %}"><img
+                        src="{% static 'img/logo.png' %}"> <span
+                        class="d-none d-lg-inline-block font-weight-bold text-danger">Photo Studio</span></a>
+            </div>
+            <div class="col col-sm col-md col-lg-5 navbar">
+                <form action="{% url 'search' action='top' %}" method="GET" class="form-inline bd-search w-100">
+                    <div class="form-group has-search w-100">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input name="q" type="text" class="form-control rounded bg-gray200 border w-100" placeholder="Search pins" title="Search pins" required>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg navbar">
+                <ul class="nav cus-nav ml-auto align-items-center">
+                    <li class="nav-item"><a href="{% url 'home' %}"
+                            class="nav-link nav-link-icon {% if request.get_full_path == '/home/' or request.get_full_path == '/' %}active{% endif %}"
+                            title="Home"><i class="fas fa-home"></i></a></li>
+                    
+                    {% if not is_authenticated %}
+                    <li class="nav-item"><a href="{% url 'login' %}"
+                            class="nav-link nav-link-icon {% if request.get_full_path == '/login/' %}active{% endif %}"
+                            title="Login"><i class="fas fa-sign-in-alt"></i></a></li>
+                    {% else %}
+                    <li class="nav-item"><a href="{% url 'pin_new' %}"
+                            class="nav-link nav-link-icon {% if request.get_full_path == '/pin/new/' %}active{% endif %}"
+                            title="Create"><i class="fas fa-plus"></i></a></li>
+                    {% endif %}
+
+                    {% if is_authenticated %}
+                    <li class="nav-item ">
+                        <a class="nav-link nav-link-icon" data-toggle="dropdown" style="" title="Drop Down"><i
+                                class="fas fa-caret-down"></i></a>
+                        <span class="caret"></span>
+                        <ul class="dropdown-menu dropdown-menu-right rounded shadow-lg p-2 mb-4 bg-light">
+                            <li><a class="nav-link" href="{% url 'profile' pk=account.id %}" title="profile"><i
+                                        class="fas fa-user-circle"></i>&nbsp;&nbsp;&nbsp;Profile</a></li>
+                            <li><a class="nav-link" href="{% url 'setting' %}" title="profile_edit"><i
+                                        class="fas fa-cog"></i>&nbsp;&nbsp;&nbsp;Setting</a></li>
+                            <li><a class="nav-link" href="{% url 'logout' %}" title="Log Out"><i
+                                        class="fas fa-power-off"></i>&nbsp;&nbsp;&nbsp;Log Out</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+
+                </ul>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+</nav>

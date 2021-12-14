@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>photo studio </title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    {% block container %}
+    {% endblock container %}
+
+    <footer class="footer py-5 text-center">
+        <div class="container">
+            <p>&#169;<span class="credits font-weight-bold"><a class="text-dark" href="{% url 'home' %}"><u>Abhijit Dinda</u></a></span></p>
+        </div>
+    </footer>
+    
+	<script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+
+</body>
+
+</html>
