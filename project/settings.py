@@ -92,7 +92,9 @@ DATABASES = {
             'host': 'mongodb+srv://root:vsTM2TKuXnAycdU2@cluster0.u01gc.mongodb.net/pymongo?retryWrites=true&w=majority'
         }  
     }
-} '''
+} ''',
+}
+
 
 
 # Password validation
