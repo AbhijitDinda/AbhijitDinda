@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*st_!7ti7udds65sf_ku8o^@hrz6bud^z(3qd7oqf_6bdd$f3f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,17 +82,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 
- '''DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'pymongo',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb+srv://root:vsTM2TKuXnAycdU2@cluster0.u01gc.mongodb.net/pymongo?retryWrites=true&w=majority'
-        }  
-    }
-} 
-'''
+}
 
 
 
@@ -141,7 +131,7 @@ STATICFILES_DIRS = [
 MEDIA_URL="/media/" 
 
 MEDIA_ROOT= BASE_DIR / "media/"
-
+STATIC_ROOT= BASE_DIR / "staticfiles"
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
